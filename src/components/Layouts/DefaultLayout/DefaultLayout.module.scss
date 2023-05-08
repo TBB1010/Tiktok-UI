@@ -5,9 +5,8 @@
 }
 
 .container {
-    width: var(--default-layout-width, 1150px);
-    background-color: #888;
     display: flex;
+    width: var(--default-layout-width, 1150px);
 }
 
 .content {
