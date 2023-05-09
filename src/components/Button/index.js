@@ -19,6 +19,7 @@ function Button({
     leftIcon,
     rightIcon,
     onClick,
+    className,
     ...passProps
 }) {
     let Comp = 'button';
@@ -30,6 +31,7 @@ function Button({
         disabled,
         small,
         large,
+        [className]: className
     });
     const props = {
         onClick,

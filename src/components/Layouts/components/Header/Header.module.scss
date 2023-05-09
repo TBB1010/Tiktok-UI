@@ -8,6 +8,7 @@
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .inner {
@@ -21,6 +22,10 @@
 .search,
 .search-result {
     width: 361px;
+}
+
+.search-result {
+    margin-top: 8px;
 }
 
 .search {
@@ -60,7 +65,7 @@
     }
 }
 
-.search-title{
+.search-title {
     color: rgba(22, 24, 35, 0.5);
     font-size: 1.4rem;
     font-weight: 600;
@@ -93,3 +98,19 @@
         background-color: rgba(22, 24, 35, 0.06);
     }
 }
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.more-btn {
+    width: 20px;
+    height: 40px;
+    font-size: 2rem;
+    margin-left: 16px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
