@@ -13,6 +13,7 @@
 
 .inner {
     height: 100%;
+    padding: 0 var(--default-layout-horizontal-spacer);
     width: var(--default-layout-width, 1150px);
     display: flex;
     align-items: center;
@@ -99,6 +100,7 @@
     }
 }
 
+// Actions
 .actions {
     display: flex;
     justify-content: center;
@@ -114,3 +116,18 @@
     cursor: pointer;
 }
 
+.action-btn {
+    font-size: 2.4rem;
+    background-color: transparent;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    margin-left: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
