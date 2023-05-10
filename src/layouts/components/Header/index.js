@@ -25,8 +25,8 @@ import Menu from '@/components/Poper/Menu';
 import { faMoon } from '@fortawesome/free-regular-svg-icons';
 import { InboxIcon, MessageIcon, UploadIcon } from '@/components/Icons';
 import Image from '@/components/Image';
-import Search from '@/components/Layouts/components/Search';
-import routesConfig from '@/config/routes';
+import Search from '@/layouts/components/Search';
+import config from '@/config';
 
 const cx = classNames.bind(styles);
 
@@ -131,7 +131,7 @@ function Header() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logoTiktok')}>
+                <Link to={config.routes.home} className={cx('logoTiktok')}>
                     <img src={images.logo} alt="Tiktok" />
                 </Link>
 

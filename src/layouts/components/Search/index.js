@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
-import * as searchServices from '@/apiServices/searchServices';
+import * as searchService from '@/services/searchService';
 import { Wrapper as PoperWrapper } from '@/components/Poper';
 import AccountItem from '@/components/AccountItem';
 import { SearchIcon } from '@/components/Icons';
@@ -31,7 +31,7 @@ function Search() {
         const fetchApi = async () => {
             setLoading(true);
 
-            const result = await searchServices.search(debounced);
+            const result = await searchService.search(debounced);
 
             setSearchResult(result);
             setLoading(false);
