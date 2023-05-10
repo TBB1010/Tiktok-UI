@@ -47,6 +47,31 @@ const MENU_ITEMS = [
                     code: 'vi',
                     title: 'Tiếng Việt',
                 },
+                {
+                    type: 'Language',
+                    code: 'vi',
+                    title: 'Campuchia',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi',
+                    title: 'Thái lan',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi',
+                    title: 'Lào',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi',
+                    title: 'Pháp',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi',
+                    title: 'Trung quốc',
+                },
             ],
         },
     },
