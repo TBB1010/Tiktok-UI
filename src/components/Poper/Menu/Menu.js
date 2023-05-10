@@ -36,6 +36,24 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
         });
     };
 
+    const handleBackMenu = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <PoperWrapper className={cx('menu-poper')}>
+                {history.length > 1 && <Header title={current.title} onBack={handleBackMenu} />}
+                <div className={cx('menu-body')}>{renderItem()}</div>
+            </PoperWrapper>
+        </div>
+    );
+
+    // Reset first page
+    const handleResetMenu = () => {
+        setHistory((prev) => prev.slice(0, 1));
+    };
+
     return (
         <HeadlessTippy
             interactive
@@ -43,22 +61,8 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             offset={[12, 6]}
             hideOnClick={hideOnClick}
             placement="bottom-end"
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PoperWrapper className={cx('menu-poper')}>
-                        {history.length > 1 && (
-                            <Header
-                                title={current.title}
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
-                            />
-                        )}
-                        <div className={cx('menu-body')}>{renderItem()}</div>
-                    </PoperWrapper>
-                </div>
-            )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            render={renderResult}
+            onHide={handleResetMenu}
         >
             {children}
         </HeadlessTippy>
