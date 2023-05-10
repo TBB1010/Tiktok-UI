@@ -20,86 +20,6 @@
     justify-content: space-between;
 }
 
-.search,
-.search-result {
-    width: 361px;
-}
-
-.search-result {
-    margin-top: 8px;
-}
-
-.search {
-    position: relative;
-    height: var(--search-heigth);
-    padding-left: 16px;
-    background: rgba(22, 24, 35, 0.06);
-    border-radius: var(--search-border-radius);
-    display: flex;
-    align-items: center;
-    border: 1.5px solid transparent;
-
-    input {
-        flex: 1;
-        padding: 12px 0;
-        font-size: 1.6rem;
-        color: rgba(22, 24, 35, 1);
-        background-color: transparent;
-        caret-color: var(--primary);
-    }
-
-    input:not(:placeholder-shown) ~ .search-btn {
-        color: rgba(22, 24, 35, 0.75);
-    }
-
-    &::after {
-        content: ' ';
-        position: absolute;
-        width: 1px;
-        height: calc(var(--search-heigth) - 18px);
-        right: 52px;
-        background-color: rgba(22, 24, 35, 0.12);
-    }
-
-    &:focus-within {
-        border-color: rgba(22, 24, 35, 0.2);
-    }
-}
-
-.search-title {
-    color: rgba(22, 24, 35, 0.5);
-    font-size: 1.4rem;
-    font-weight: 600;
-    padding: 5px 12px;
-}
-
-.clear,
-.loading {
-    position: absolute;
-    right: 52px;
-    font-size: 16px;
-    color: rgba(22, 24, 35, 0.34);
-    margin: 0 12px;
-}
-
-.search-btn {
-    width: 52px;
-    height: 100%;
-    border-top-right-radius: var(--search-border-radius);
-    border-bottom-right-radius: var(--search-border-radius);
-    color: rgba(22, 24, 35, 0.34);
-    font-size: 1.8rem;
-
-    &:hover {
-        background-color: rgba(22, 24, 35, 0.03);
-        cursor: pointer;
-    }
-
-    &:active {
-        background-color: rgba(22, 24, 35, 0.06);
-    }
-}
-
 // Actions
 .actions {
     display: flex;
@@ -117,10 +37,23 @@
 }
 
 .action-btn {
+    position: relative;
     font-size: 2.4rem;
     background-color: transparent;
     margin: 10px;
     cursor: pointer;
+
+    .badge {
+        position: absolute;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--white);
+        background-color: var(--primary);
+        padding: 4px;
+        border-radius: 50%;
+        top: -9px;
+        left: 18px;
+    }
 }
 
 .user-avatar {
