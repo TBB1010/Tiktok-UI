@@ -1,0 +1,40 @@
+.account-item {
+    display: flex;
+    align-items: center;
+    padding: 7px 8px;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.item-info {
+    flex: 1;
+    margin-left: 12px;
+    line-height: 1.1;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.nick-name {
+    color: rgb(22, 24, 35);
+    font-family: SofiaPro;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.check {
+    margin-left: 4px;
+    color: #20d5ec;
+    font-size: 1.4rem;
+}
+
+.name {
+    font-size: 1.2rem;
+}

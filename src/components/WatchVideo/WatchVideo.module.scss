@@ -1,0 +1,129 @@
+.wrapper {
+    display: flex;
+    padding: 20px 40px;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: rgba(22, 24, 35, 0.12);
+    }
+}
+
+.content {
+    position: relative;
+    margin-left: 12px;
+    width: 624px;
+    flex: 1 1 624px;
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.title {
+    cursor: pointer;
+}
+
+.nickname {
+    font-family: SofiaPro;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 25px;
+    margin-right: 4px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.name {
+    font-size: 1.4rem;
+}
+
+.body {
+    font-size: 1.6rem;
+    font-weight: 600;
+
+    .text {
+        font-weight: 400;
+    }
+}
+
+.hashtag {
+    margin-left: 4px;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.music {
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+
+    span {
+        margin-left: 4px;
+    }
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.container {
+    display: flex;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.icon {
+    width: 48px;
+    padding: 13px 0;
+    margin: 8px 0 4px 0;
+    border-radius: 60%;
+    font-size: 2.2rem;
+    background-color: rgba(22, 24, 35, 0.06);
+    cursor: pointer;
+}
+
+.value {
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 1.2rem;
+    line-height: 17px;
+    text-align: center;
+}
+
+.video {
+    width: 320px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 25px;
+}
+
+.follow-btn {
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+
+.none {
+    display: none;
+}

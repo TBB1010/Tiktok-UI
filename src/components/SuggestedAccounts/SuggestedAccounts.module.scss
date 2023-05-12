@@ -1,0 +1,32 @@
+.wrapper {
+    position: relative;
+    padding: 16px 0;
+    color: rgba(22, 24, 35, 0.75);
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 1px;
+        background: rgba(22, 24, 35, 0.12);
+    }
+}
+
+.label {
+    padding: 0 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 20px;
+}
+
+.more-btn {
+    color: rgb(254, 44, 85);
+    font-weight: 600;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0px 8px;
+    margin-top: 8px;
+}

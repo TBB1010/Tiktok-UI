@@ -1,7 +1,13 @@
+import WatchVideo from '@/components/WatchVideo/WatchVideo';
+
 function Home() {
-    return ( 
-        <h2>Home page</h2>
-     );
+    return (
+        <>
+            <WatchVideo />
+            <WatchVideo />
+            <WatchVideo />
+        </>
+    );
 }
 
 export default Home;
