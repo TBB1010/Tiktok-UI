@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
 import PropTypes from 'prop-types';
 
-import video1 from '@/assets/videos/video-1.mp4';
+// import video1 from '@/assets/videos/video-1.mp4';
+// import video2 from '@/assets/videos/video-2.mp4';
+import video3 from '@/assets/videos/video-3.mp4';
 import styles from './WatchVideo.module.scss';
 import Image from '@/components/Image';
 import { faCommentDots, faHeart, faMusic, faShare } from '@fortawesome/free-solid-svg-icons';
@@ -13,18 +15,40 @@ import { Wrapper as PoperWrapper } from '@/components/Poper';
 
 const cx = classNames.bind(styles);
 
-function WatchVideo({ none }) {
+function WatchVideo({ none, data }) {
     const renderPreview = (attrs) => (
         <div className={cx('preview')} tabIndex="-1" {...attrs}>
             <PoperWrapper>
                 <AccountPreview />
+                <div>
+                    <span className={cx('bio')}>
+                        🚀 Review Websites /Apps #1 🎯
+                        <br />
+                        👇🏻 Website để thuê các freelancers 👇🏻
+                    </span>
+                </div>
             </PoperWrapper>
         </div>
     );
 
+    // const videos = [
+    //     {
+    //         id: 1,
+    //         video: video1,
+    //     },
+    //     {
+    //         id: 2,
+    //         video: video2,
+    //     },
+    //     {
+    //         id: 3,
+    //         video: video3,
+    //     },
+    // ];
+
     return (
         <div className={cx('wrapper')}>
-            <Image className={cx('avatar')} src="https://www.tiktok.com/favicon.ico" alt="avatar" />
+            <Image className={cx('avatar')} src={data.avatar} alt="avatar" />
             <div className={cx('content')}>
                 <div>
                     <HeadlessTippy
@@ -35,8 +59,8 @@ function WatchVideo({ none }) {
                         render={renderPreview}
                     >
                         <div className={cx('title')}>
-                            <strong className={cx('nickname')}>ZentSoft</strong>
-                            <span className={cx('name')}>ai tips & hacks</span>
+                            <strong className={cx('nickname')}>{data.full_name}</strong>
+                            <span className={cx('name')}>{data.nickname}</span>
                         </div>
                     </HeadlessTippy>
                 </div>
@@ -50,7 +74,7 @@ function WatchVideo({ none }) {
                     </h4>
                 </div>
                 <div className={cx('container')}>
-                    <video className={cx('video')} controls src={video1} />
+                    <video className={cx('video')} controls src={video3} />
                     <div className={cx('comment')}>
                         <FontAwesomeIcon className={cx('icon')} icon={faHeart} />
                         <span className={cx('value')}>94.23M</span>
@@ -69,6 +93,7 @@ function WatchVideo({ none }) {
 }
 
 WatchVideo.propTypes = {
+    data: PropTypes.object.isRequired,
     none: PropTypes.bool,
 };
 

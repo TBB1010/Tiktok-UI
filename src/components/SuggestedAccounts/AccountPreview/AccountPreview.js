@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+
 import styles from './AccountPreview.module.scss';
 import Image from '@/components/Image';
 import Button from '@/components/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,7 @@ function AccountPreview() {
             </header>
             <div className={cx('body')}>
                 <h4 className={cx('nickname')}>
-                    <span>ZentSoft</span>
+                    <span>LeCongTo</span>
                     <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
                 </h4>
                 <span className={cx('name')}>🆘tbb1010🆘</span>

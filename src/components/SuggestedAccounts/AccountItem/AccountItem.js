@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 import styles from './AccountItem.module.scss';
 import Image from '@/components/Image';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +11,7 @@ import AccountPreview from '@/components/SuggestedAccounts/AccountPreview';
 
 const cx = classNames.bind(styles);
 
-function AccountItem() {
+function AccountItem({ data }) {
     const renderPreview = (attrs) => (
         <div className={cx('preview')} tabIndex="-1" {...attrs}>
             <PoperWrapper>
@@ -29,18 +30,22 @@ function AccountItem() {
                 render={renderPreview}
             >
                 <div className={cx('account-item')}>
-                    <Image src="https://www.tiktok.com/favicon.ico" alt="Avatar" className={cx('avatar')} />
+                    <Image src={data.avatar} alt={data.full_name} className={cx('avatar')} />
                     <div className={cx('item-info')}>
                         <h4 className={cx('nick-name')}>
-                            <span>ZentSoft</span>
-                            <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
+                            <span>{data.full_name}</span>
+                            {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
                         </h4>
-                        <span className={cx('name')}>tbb1010</span>
+                        <span className={cx('name')}>{data.nickname}</span>
                     </div>
                 </div>
             </HeadlessTippy>
         </div>
     );
 }
+
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default AccountItem;

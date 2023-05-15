@@ -127,3 +127,10 @@
 .none {
     display: none;
 }
+
+.bio {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+}
