@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 // import { Wrapper as PoperWrapper } from '@/components/Poper';
 import styles from './Header.module.scss';
@@ -28,7 +29,7 @@ import Image from '@/components/Image';
 import Search from '@/layouts/components/Search';
 import config from '@/config';
 import LoginModal from '@/components/LoginModal';
-import { useEffect, useState } from 'react';
+import { account } from '@/services/fakeApiAccount';
 
 const cx = classNames.bind(styles);
 
@@ -93,8 +94,12 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const currentUser = false;
+    const [currentUser, setCurrentUser] = useState(undefined);
     const [hidden, setHidden] = useState(false);
+    const [logOut, setLogOut] = useState(true);
+    localStorage.setItem('accounts', JSON.stringify(account));
+    const userLogin = localStorage.getItem('user-login');
+    const accounts = localStorage.getItem('accounts');
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -106,10 +111,44 @@ function Header() {
         }
     };
 
+    const handleLogout = () => {
+        setCurrentUser(false);
+        setLogOut(false)
+    };
+
+    useEffect(() => {
+        const account = JSON.parse(accounts);
+        account.map((acc) => {
+            if (userLogin) {
+                const user = JSON.parse(userLogin);
+
+                if (user.name === acc.name && user.password === acc.password) {
+                    setCurrentUser(true);
+                }
+            }
+        });
+    }, []);
+
+    const handleLogin = () => {
+        const account = JSON.parse(accounts);
+        account.map((acc) => {
+            if (userLogin) {
+                const user = JSON.parse(userLogin);
+
+                if (user.name === acc.name && user.password === acc.password) {
+                    setCurrentUser(true);
+                    setHidden(!hidden);
+                } else {
+                    setCurrentUser(true);
+                    setHidden(!hidden);
+                }
+            }
+        });
+    };
+
     const handleClick = () => {
         setHidden(!hidden);
     };
-    useEffect(() => {}, []);
 
     const useMenu = [
         {
@@ -177,7 +216,7 @@ function Header() {
                                 </Button>
                             </>
                         )}
-                        <Menu items={currentUser ? useMenu : MENU_ITEMS} onChange={handleMenuChange}>
+                        <Menu items={logOut ? useMenu : MENU_ITEMS} onChange={handleMenuChange} onClick={handleLogout}>
                             {currentUser ? (
                                 <Image
                                     className={cx('user-avatar')}
@@ -194,7 +233,7 @@ function Header() {
                     </div>
                 </div>
             </div>
-            <LoginModal className={cx('modal', { hidden: hidden })} />
+            {hidden && <LoginModal onLogin={handleLogin} className={cx('modal')} />}
         </>
     );
 }

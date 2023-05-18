@@ -4,6 +4,8 @@ import classNames from 'classnames/bind';
 
 import styles from './SuggestedAccounts.module.scss';
 import AccountItem from './AccountItem';
+// import { useDebounce } from '@/hooks';
+// import * as searchServices from '@/services/searchService';
 
 const cx = classNames.bind(styles);
 
@@ -18,10 +20,24 @@ function SuggestedAccounts({ label, see }) {
             });
     }, []);
 
+    // const debounceValue = useDebounce('le', 0);
+
+    // useEffect(() => {
+    //     if (!debounceValue.trim()) {
+    //         setSuggested([]);
+    //         return;
+    //     }
+    //     const fetchApi = async () => {
+    //         const result = await searchServices.search(debounceValue);
+    //         setSuggested(result);
+    //     };
+    //     fetchApi();
+    // }, [debounceValue]);
+
     return (
         <div className={cx('wrapper')}>
             <p className={cx('label')}>{label}</p>
-            {suggested.map((result, index) => (
+            {suggested.map((result) => (
                 <AccountItem key={result.id} data={result} />
             ))}
             <p className={cx('more-btn')}>{see}</p>

@@ -1,0 +1,85 @@
+.content {
+    height: 430px;
+    margin-bottom: 64px;
+    margin-top: 48px;
+    width: 375px;
+    margin: auto;
+}
+
+.back-btn {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.icon {
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 20px;
+    height: 20px;
+    padding: 8px;
+}
+
+.title {
+    font-family: SofiaPro;
+    font-size: 3.2rem;
+    margin: 16px auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+.info {
+    font-weight: 600;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.login,
+.forgot {
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 600;
+    font-size: 1.2rem;
+    width: 100px;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: rgb(22, 24, 35);
+    }
+}
+
+.name,
+.password {
+    border-radius: 2px;
+    background-color: rgba(22, 24, 35, 0.06);
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    padding: 0 12px;
+    line-height: 100%;
+    font-size: 1.6rem;
+    height: 44px;
+    caret-color: var(--primary);
+    width: 100%;
+}
+
+.password {
+    margin: 10px 0;
+}
+
+.btn {
+    color: rgba(22, 24, 35, 0.34);
+    background-color: rgba(22, 24, 35, 0.06);
+    min-width: 120px;
+    min-height: 46px;
+    font-size: 1.6rem;
+    line-height: 22px;
+    font-weight: 700;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 21px;
+}
+
+.btnColor {
+    background-color: var(--primary);
+    color: #fff;
+}

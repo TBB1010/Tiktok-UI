@@ -12,12 +12,10 @@ import AccountPreview from '@/components/SuggestedAccounts/AccountPreview';
 const cx = classNames.bind(styles);
 
 function AccountItem({ data }) {
-    const renderPreview = (attrs) => (
-        <div className={cx('preview')} tabIndex="-1" {...attrs}>
-            <PoperWrapper>
-                <AccountPreview />
-            </PoperWrapper>
-        </div>
+    const renderPreview = () => (
+        <PoperWrapper>
+            <AccountPreview />
+        </PoperWrapper>
     );
 
     return (
