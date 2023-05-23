@@ -10,11 +10,10 @@ import { faCommentDots, faHeart, faMusic, faShare } from '@fortawesome/free-soli
 import Button from '@/components/Button';
 import AccountPreview from '@/components/SuggestedAccounts/AccountPreview';
 import { Wrapper as PoperWrapper } from '@/components/Poper';
-import video3 from '@/assets/videos/video-3.mp4';
 
 const cx = classNames.bind(styles);
 
-function WatchVideo({ none, data, index }) {
+function WatchVideo({ none, data }) {
     const [isActive, setIsActive] = useState(false);
     const [follow, setFollow] = useState(true);
 
@@ -25,17 +24,17 @@ function WatchVideo({ none, data, index }) {
         if (Accounts) {
             const account = JSON.parse(Accounts);
 
-            account.map((acc) => {
-                if (data.id && acc.id) {
-                    localStorage.setItem(
-                        acc.id,
-                        JSON.stringify({
-                            likes: [data.id],
-                            follow: [],
-                        }),
-                    );
-                }
-            });
+            // account.map((acc) => {
+            //     if (data.id && acc.id) {
+            //         localStorage.setItem(
+            //             acc.id,
+            //             JSON.stringify({
+            //                 likes: [data.id],
+            //                 follow: [],
+            //             }),
+            //         );
+            //     }
+            // });
         }
     };
 
@@ -70,33 +69,33 @@ function WatchVideo({ none, data, index }) {
                         render={renderPreview}
                     >
                         <div className={cx('title')}>
-                            <strong className={cx('nickname')}>{data.full_name}</strong>
-                            <span className={cx('name')}>{data.nickname}</span>
+                            <strong className={cx('nickname')}>{data.fullName}</strong>
+                            <span className={cx('name')}>{data.nickName}</span>
                         </div>
                     </HeadlessTippy>
                 </div>
                 <div className={cx('body')}>
-                    <span className={cx('text')}>AI version of CANVA is INSANE! 🤯</span>
+                    <span className={cx('text')}>{data.bio}</span>
                     <strong className={cx('hashtag')}>#chatgpt</strong>
                     <strong className={cx('hashtag')}>#aitools</strong>
                     <h4 className={cx('music')}>
                         <FontAwesomeIcon icon={faMusic} />
-                        <span>Every Single Thing - Homeshake</span>
+                        <span>{data.music}</span>
                     </h4>
                 </div>
                 <div className={cx('container')}>
-                    <video className={cx('video')} controls autoPlay={true} src={video3} />
+                    <video className={cx('video')} controls autoPlay={false} src={data.video} />
                     <div className={cx('comment')}>
                         {isActive ? (
                             <FontAwesomeIcon onClick={handleClick} className={cx('active')} icon={faHeart} />
                         ) : (
                             <FontAwesomeIcon onClick={handleClick} className={cx('icon')} icon={faHeart} />
                         )}
-                        <span className={cx('value')}>94.23M</span>
+                        <span className={cx('value')}>{data.likeCount}</span>
                         <FontAwesomeIcon className={cx('icon')} icon={faCommentDots} />
-                        <span className={cx('value')}>87.3k</span>
+                        <span className={cx('value')}>{data.commentCount}</span>
                         <FontAwesomeIcon className={cx('icon')} icon={faShare} />
-                        <span className={cx('value')}>34.4M</span>
+                        <span className={cx('value')}>{data.shareCount}</span>
                     </div>
                 </div>
                 {follow ? (

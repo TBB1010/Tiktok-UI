@@ -6,7 +6,7 @@ import { Wrapper as PoperWrapper } from '@/components/Poper';
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import Header from './Header';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -62,6 +62,10 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn,
     const handleResetMenu = () => {
         setHistory((prev) => prev.slice(0, 1));
     };
+
+    useEffect(()=>{
+        setHistory([{data: items}])
+    },[items])
 
     return (
         <HeadlessTippy

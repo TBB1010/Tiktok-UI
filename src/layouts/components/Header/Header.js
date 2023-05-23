@@ -11,31 +11,31 @@ import {
     faSignIn,
     // faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 // import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {Link, useFetcher} from 'react-router-dom';
+import {useEffect, useState} from 'react';
 
 // import { Wrapper as PoperWrapper } from '@/components/Poper';
 import styles from './Header.module.scss';
 import images from '@/assets/images';
 import Button from '@/components/Button';
 import Menu from '@/components/Poper/Menu';
-import { faMoon } from '@fortawesome/free-regular-svg-icons';
-import { InboxIcon, MessageIcon, UploadIcon } from '@/components/Icons';
+import {faMoon} from '@fortawesome/free-regular-svg-icons';
+import {InboxIcon, MessageIcon, UploadIcon} from '@/components/Icons';
 import Image from '@/components/Image';
 import Search from '@/layouts/components/Search';
 import config from '@/config';
 import LoginModal from '@/components/LoginModal';
-import { account } from '@/services/fakeApiAccount';
+import {account} from '@/services/fakeApiAccount';
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        icon: <FontAwesomeIcon icon={faEarthAsia}/>,
         title: 'English',
         children: {
             title: 'Language',
@@ -79,16 +79,16 @@ const MENU_ITEMS = [
         },
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        icon: <FontAwesomeIcon icon={faCircleQuestion}/>,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <FontAwesomeIcon icon={faKeyboard}/>,
         title: 'Keyboard shortcuts',
     },
     {
-        icon: <FontAwesomeIcon icon={faMoon} />,
+        icon: <FontAwesomeIcon icon={faMoon}/>,
         title: 'Dark mode',
     },
 ];
@@ -96,7 +96,6 @@ const MENU_ITEMS = [
 function Header() {
     const [currentUser, setCurrentUser] = useState(undefined);
     const [hidden, setHidden] = useState(false);
-    const [logOut, setLogOut] = useState(true);
     localStorage.setItem('accounts', JSON.stringify(account));
     const userLogin = localStorage.getItem('user-login');
     const accounts = localStorage.getItem('accounts');
@@ -113,7 +112,6 @@ function Header() {
 
     const handleLogout = () => {
         setCurrentUser(false);
-        setLogOut(false)
     };
 
     useEffect(() => {
@@ -152,23 +150,23 @@ function Header() {
 
     const useMenu = [
         {
-            icon: <FontAwesomeIcon icon={faUser} />,
+            icon: <FontAwesomeIcon icon={faUser}/>,
             title: 'View profile',
             to: '/@tbb1010',
         },
         {
-            icon: <FontAwesomeIcon icon={faCoins} />,
+            icon: <FontAwesomeIcon icon={faCoins}/>,
             title: 'Get Coins',
             to: '/coin',
         },
         {
-            icon: <FontAwesomeIcon icon={faGear} />,
+            icon: <FontAwesomeIcon icon={faGear}/>,
             title: 'Settings',
             to: '/settings',
         },
         ...MENU_ITEMS,
         {
-            icon: <FontAwesomeIcon icon={faSignIn} />,
+            icon: <FontAwesomeIcon icon={faSignIn}/>,
             title: 'Log out',
             to: '/logout',
             separate: true,
@@ -180,27 +178,27 @@ function Header() {
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
                     <Link to={config.routes.home} className={cx('logoTiktok')}>
-                        <img src={images.logo} alt="Tiktok" />
+                        <img src={images.logo} alt="Tiktok"/>
                     </Link>
 
-                    <Search />
+                    <Search/>
 
                     <div className={cx('actions')}>
                         {currentUser ? (
                             <>
                                 <Tippy delay={[0, 100]} content="Upload video" placement="bottom">
                                     <button className={cx('action-btn')}>
-                                        <UploadIcon />
+                                        <UploadIcon/>
                                     </button>
                                 </Tippy>
                                 <Tippy delay={[0, 100]} content="Message" placement="bottom">
                                     <button className={cx('action-btn')}>
-                                        <MessageIcon />
+                                        <MessageIcon/>
                                     </button>
                                 </Tippy>
                                 <Tippy delay={[0, 100]} content="Inbox" placement="bottom">
                                     <button className={cx('action-btn')}>
-                                        <InboxIcon />
+                                        <InboxIcon/>
                                         <span className={cx('badge')}>12</span>
                                     </button>
                                 </Tippy>
@@ -208,7 +206,7 @@ function Header() {
                         ) : (
                             <>
                                 <Button text>
-                                    <FontAwesomeIcon className={cx('plus')} icon={faPlus} />
+                                    <FontAwesomeIcon className={cx('plus')} icon={faPlus}/>
                                     <span>Upload</span>
                                 </Button>
                                 <Button onClick={handleClick} primary>
@@ -216,7 +214,8 @@ function Header() {
                                 </Button>
                             </>
                         )}
-                        <Menu items={logOut ? useMenu : MENU_ITEMS} onChange={handleMenuChange} onClick={handleLogout}>
+                        <Menu items={currentUser ? useMenu : MENU_ITEMS} onChange={handleMenuChange}
+                              onClick={handleLogout}>
                             {currentUser ? (
                                 <Image
                                     className={cx('user-avatar')}
@@ -226,14 +225,14 @@ function Header() {
                                 />
                             ) : (
                                 <button className={cx('more-btn')}>
-                                    <FontAwesomeIcon icon={faEllipsisVertical} />
+                                    <FontAwesomeIcon icon={faEllipsisVertical}/>
                                 </button>
                             )}
                         </Menu>
                     </div>
                 </div>
             </div>
-            {hidden && <LoginModal onLogin={handleLogin} className={cx('modal')} />}
+            {hidden && <LoginModal onLogin={handleLogin} onClick={handleClick} className={cx('modal')}/>}
         </>
     );
 }

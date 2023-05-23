@@ -10,12 +10,13 @@ import Login from '@/components/LoginModal/components/Login';
 
 const cx = classNames.bind(styles);
 
-function LoginModal({ onLogin }) {
+function LoginModal({ onLogin, onClick }) {
     const [close, setClose] = useState(true);
     const [show, setShow] = useState(true);
 
     const handleClick = () => {
         setClose(!close);
+        onClick();
     };
 
     const handleSubmit = () => {

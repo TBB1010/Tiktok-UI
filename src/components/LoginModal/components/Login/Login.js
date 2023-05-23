@@ -26,13 +26,13 @@ function Login({ onBack, onLogin }) {
                             password: password,
                         }),
                     );
-                    localStorage.setItem(
-                        acc.id,
-                        JSON.stringify({
-                            likes: [],
-                            follow: [],
-                        }),
-                    );
+                    // localStorage.setItem(
+                    //     acc.id,
+                    //     JSON.stringify({
+                    //         likes: [],
+                    //         follow: [],
+                    //     }),
+                    // );
                 }
             });
         }
@@ -41,13 +41,12 @@ function Login({ onBack, onLogin }) {
     const handleLogin = () => {
         // const userLogin = localStorage.getItem('user-login');
         // const user = JSON.parse(userLogin);
-
         handleUpdateAccount();
 
         const Accounts = localStorage.getItem('accounts');
 
         const account = JSON.parse(Accounts);
-        account.map((acc, index) => {
+        account.map((acc) => {
             if (name === acc.name && password === acc.password) {
                 onLogin();
             }

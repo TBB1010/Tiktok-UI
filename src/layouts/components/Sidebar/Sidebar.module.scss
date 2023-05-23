@@ -1,10 +1,21 @@
+.wrapper-scroll {
+    overflow-y: auto;
+    padding-top: 20px;
+    z-index: 5;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    width: 310px;
+    background-color: #ffffff;
+}
+
 .wrapper {
-    width: 300px;
+    z-index: 5;
+    width: 310px;
     padding: 20px 0 26px 0;
     margin-left: -8px;
     display: flex;
     flex-direction: column;
-    
 }
 
 .menu {
