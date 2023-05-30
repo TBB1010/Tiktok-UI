@@ -1,0 +1,63 @@
+// Info Sign Up
+.wrapper {
+    margin-bottom: 64px;
+    margin-top: 48px;
+    overflow-y: scroll;
+    height: 405px;
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-family: SofiaPro;
+    font-size: 3.2rem;
+    margin: 16px auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    font-weight: 600;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    font-family: ProximaNova;
+    width: 375px;
+    height: 44px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 16px;
+    padding: 0 12px;
+}
+
+.icon {
+    font-size: 2.1rem;
+}
+
+.info {
+    flex: 1;
+}
+
+.footer {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    padding: 16px 30px;
+    position: absolute;
+    bottom: 64px;
+    background-color: #ffffff;
+}
+
+.text {
+    color: var(--black);
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

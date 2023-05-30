@@ -1,14 +1,14 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import styles from './AccountPreview.module.scss';
 import Image from '@/components/Image';
 import Button from '@/components/Button';
 
 const cx = classNames.bind(styles);
 
-function AccountPreview() {
+function AccountPreview({ data }) {
     return (
         <div className={cx('wrapper')}>
             <header className={cx('header')}>

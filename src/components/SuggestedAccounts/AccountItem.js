@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 function AccountItem({ data }) {
     const renderPreview = () => (
         <PoperWrapper>
-            <AccountPreview />
+            <AccountPreview data={data} />
         </PoperWrapper>
     );
 
@@ -24,7 +24,7 @@ function AccountItem({ data }) {
                 interactive
                 delay={[800, 0]}
                 offset={[-10, 2]}
-                placement="bottom-start"
+                placement="bottom"
                 render={renderPreview}
             >
                 <div className={cx('account-item')}>

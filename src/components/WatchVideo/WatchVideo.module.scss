@@ -38,20 +38,27 @@
     font-weight: 700;
     font-size: 1.8rem;
     line-height: 25px;
-    margin-right: 4px;
 
     &:hover {
         text-decoration: underline;
     }
 }
 
+.check {
+    margin-left: 4px;
+    color: #20d5ec;
+    font-size: 1.4rem;
+}
+
 .name {
+    margin-left: 4px;
     font-size: 1.4rem;
 }
 
 .body {
     font-size: 1.6rem;
     font-weight: 600;
+    max-width: 500px;
 
     .text {
         font-weight: 400;
@@ -74,7 +81,7 @@
     margin-bottom: 20px;
 
     span {
-        margin-left: 4px;
+        margin-left: 8px;
     }
 
     &:hover {
@@ -94,7 +101,8 @@
 }
 
 .icon,
-.active {
+.active,
+.bookmark {
     width: 48px;
     padding: 13px 0;
     margin: 8px 0 4px 0;
@@ -106,6 +114,10 @@
 
 .active {
     color: var(--primary);
+}
+
+.bookmark {
+    color: #face15;
 }
 
 .value {
@@ -121,6 +133,7 @@
     object-fit: cover;
     border-radius: 8px;
     margin-right: 25px;
+    cursor: pointer;
 }
 
 .follow-btn {

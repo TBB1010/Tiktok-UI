@@ -1,43 +1,38 @@
 /* eslint-disable array-callback-return */
 import classNames from 'classnames/bind';
-import styles from './Login.module.scss';
+import styles from './SignUp.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import Button from '@/components/Button';
 import { useState } from 'react';
-import { actions, useStore } from '@/store';
 
 const cx = classNames.bind(styles);
 
-function Login({ onBack, onLogin }) {
-    // eslint-disable-next-line no-unused-vars
-    const [state, dispatch] = useStore();
+function SignUp({ onBack }) {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const [forgot, setForgot] = useState(false);
+    const [info, setInfo] = useState(undefined);
 
-    const handleLogin = () => {
-        const accounts = JSON.parse(localStorage.getItem('accounts'));
-        const userLogin = JSON.parse(localStorage.getItem('user-login'));
+    const handleUpdateUser = () => {
+        const Accounts = JSON.parse(localStorage.getItem('accounts'));
 
-        accounts.map((acc) => {
-            if (
-                acc.name === userLogin.name &&
-                acc.password === userLogin.password &&
-                name === userLogin.name &&
-                password === userLogin.password
-            ) {
-                onLogin();
-                dispatch(
-                    actions.handleLogin({
-                        liked: [...acc.liked],
-                        following: [...acc.following],
-                    }),
-                );
-            } else {
-                setForgot(true);
-            }
-        });
+        if (Accounts) {
+            Accounts.map((acc) => {
+                if (name === acc.name && password === acc.password) {
+                    localStorage.setItem(
+                        'user-login',
+                        JSON.stringify({
+                            name: name,
+                            password: password,
+                        }),
+                    );
+                    setName('');
+                    setPassword('');
+                } else {
+                    setInfo(true);
+                }
+            });
+        }
     };
 
     const handleFocus = () => {
@@ -52,10 +47,10 @@ function Login({ onBack, onLogin }) {
                 <FontAwesomeIcon className={cx('icon')} icon={faChevronLeft} />
             </button>
             <div className={cx('content')}>
-                <h2 className={cx('title')}>Log in</h2>
+                <h2 className={cx('title')}>Sign up</h2>
                 <div className={cx('info')}>
-                    <span className={cx('sub-title')}>Email or username</span>
-                    <span className={cx('login')}>Log in with phone</span>
+                    <span className={cx('sub-title')}>Email </span>
+                    <span className={cx('login')}>Sign up with phone</span>
                 </div>
                 <div>
                     <input
@@ -72,22 +67,27 @@ function Login({ onBack, onLogin }) {
                         className={cx('password')}
                         placeholder="Password"
                     />
-                    {forgot && <span className={cx('note')}>Entered the wrong password!</span>}
+                    {info && <span className={cx('note')}>Enter false information!</span>}
                 </div>
                 <div>
-                    <p className={cx('forgot')}>Forgot password?</p>
                     <Button
-                        onClick={handleLogin}
+                        onClick={handleUpdateUser}
                         className={cx('btn', {
                             btnColor: handleFocus(),
                         })}
                     >
-                        Log in
+                        Sign up
                     </Button>
+                </div>
+                <div className={cx('footer')}>
+                    <span>
+                        By continuing, you agree to TikTok’s <span className={cx('text')}>Terms of Service</span> and
+                        confirm that you have read TikTok’s <span className={cx('text')}>Privacy Policy</span>
+                    </span>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Login;
+export default SignUp;

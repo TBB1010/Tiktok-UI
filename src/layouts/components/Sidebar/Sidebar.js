@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import classNames from 'classnames/bind';
 
 import styles from './Sidebar.module.scss';
@@ -12,16 +13,17 @@ import {
     UserGroupIcon,
 } from '@/components/Icons';
 import SuggestedAccounts from '@/components/SuggestedAccounts';
-import AccountPreview from "@/components/SuggestedAccounts/AccountPreview";
-import {videos} from "@/components/Videos/video";
+import { actions, useStore } from '@/store';
+import Button from '@/components/Button';
 
 const cx = classNames.bind(styles);
 
 function Sidebar() {
-    return (
+    const [state, dispatch] = useStore();
 
-            <aside className={cx('wrapper')}>
-                <div className={cx('wrapper-scroll')}>
+    return (
+        <aside className={cx('wrapper')}>
+            <div className={cx('wrapper-scroll')}>
                 <Menu className={cx('menu')}>
                     <MenuItem
                         to={config.routes.home}
@@ -42,11 +44,20 @@ function Sidebar() {
                         title="Live"
                     ></MenuItem>
                 </Menu>
+                {!state.currentUser.logIn && (
+                    <div className={cx('login')}>
+                        <span className={cx('title')}>
+                            Log in to follow creators, like <br /> videos, and view comments.
+                        </span>
+                        <Button className={cx('btn')} outline onClick={() => dispatch(actions.showLogin())}>
+                            Log in
+                        </Button>
+                    </div>
+                )}
                 <SuggestedAccounts label="Suggested accounts" see="See all" />
-                <SuggestedAccounts label="Following accounts" see="See more" />
-                </div>
-            </aside>
-
+                {state.currentUser.logIn && <SuggestedAccounts label="Following accounts" see="See more" />}
+            </div>
+        </aside>
     );
 }
 
